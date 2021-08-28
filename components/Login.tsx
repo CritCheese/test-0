@@ -31,7 +31,7 @@ export default function Login() {
                 admins
             }
         }
-        
+
     }
 
     const loginU = async (event: any) => {
@@ -46,17 +46,20 @@ export default function Login() {
         }
     }
 
-    
 
-    const checkA = async (event: any, n2:string, p2:string) => {
+
+    const checkA = async (event: any, n2: string, p2: string) => {
         let s2 = false
         event.preventDefault()
         const admins = (await loginA(event)).props.admins
-        console.log(admins)  
+        console.log(admins)
         for (let admin of admins) {
             if (admin.name == n2 && admin.password == p2) {
                 s2 = true
                 alert('Success')
+                localStorage.setItem('in', 'true')
+                localStorage.setItem('role', 'admin')
+                localStorage.setItem('name', n2)
                 router.push('../dashboard/DashboardA')
 
             }
@@ -66,17 +69,21 @@ export default function Login() {
         }
     }
 
-    const checkU = async (event: any, n1:string, p1:string) => {
+    const checkU = async (event: any, n1: string, p1: string) => {
         let s1 = false
         let s2 = ''
         const users = (await loginU(event)).props.users;
-        console.log(users)  
+        console.log(users)
         for (let user of users) {
             if (user.name == n1 && user.password == p1) {
                 s1 = true
-                if (user.status == 'active'){
+                if (user.status == 'active') {
                     s1 = true
-                alert('Success')
+                    alert('Success')
+                    localStorage.setItem('in', 'true')
+                    localStorage.setItem('role', 'admin')
+                    localStorage.setItem('name', n1)    
+                    router.push('./users/dashboard/DashboardU')
                 } else {
                     s1 = false
                     s2 = 'disabled'
@@ -86,7 +93,7 @@ export default function Login() {
         if (s1 == false && (s2 == 'active' || s2 == '')) {
             alert("Failed!")
         }
-        if (s1 == false && s2 == 'disabled'){
+        if (s1 == false && s2 == 'disabled') {
             alert('Failed! Account disabled')
         }
     }
@@ -99,11 +106,11 @@ export default function Login() {
         // console.log(users)
 
         if (window.location.href == "http://localhost:3001/admin/login/LoginA") {
-            checkA(event,n1,p1)
+            checkA(event, n1, p1)
         }
 
         else {
-            checkU(event,n1,p1)
+            checkU(event, n1, p1)
         }
     }
 

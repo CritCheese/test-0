@@ -1,26 +1,31 @@
-import { Form, Button, InputGroup } from "react-bootstrap";
-import axios from "axios";
+import { Form, Button } from "react-bootstrap";
 import { User } from "../pages/users/User";
-import { getStaticProps } from "../pages/api/users";
 
 export async function addRequest(event: any) {
+
     event.preventDefault();
     const axios = require('axios')
     const n1 = event.target.formName.value
     const p1 = event.target.formPassword.value
     const g1 = event.target.formGender.value
     const s1 = event.target.formStatus.value
-    let i1 = 12
-    let u1 = {
-        name: n1,
-        password: p1,
-        gender: g1,
-        status: s1
-    }
-    // console.log(u1)
+    const res = await fetch("http://localhost:3000/user")
+    let x2 = true
+    let u9: User[]
+    u9 = await res.json()
 
-    axios.post('http://localhost:3000/user', {
-        id: i1,
+    for (let xx of u9){
+        if (n1 == xx.name){
+            x2 = false
+            console.log("invalid name")
+            break;
+        }
+    }
+
+    if (x2 != true){
+        alert('name existed!')
+    } else {
+        axios.post('http://localhost:3000/user', {
         name: n1,
         password: p1,
         gender: g1,
@@ -28,14 +33,22 @@ export async function addRequest(event: any) {
     })
         .then(function (response: any) {
             console.log(response);
+            alert('Success!')
+            window.location.reload()
+
         })
         .catch(function (error: any) {
             console.log(error);
+            alert('Failed!')
+
         })
-        .then(i1++)
+    }
+    
+
 }
 
 export default function AddUser() {
+
     return (
         <Form onSubmit={addRequest}>
             <Form.Group className="mb-3" controlId="formName">
@@ -61,9 +74,6 @@ export default function AddUser() {
                     <option value="disabled">disabled</option>
                 </Form.Select>
             </Form.Group>
-            <Button variant="secondary" size="sm">
-                Cancel
-            </Button>
 
             <Button variant="primary" type="submit" size="sm" >
                 Submit
@@ -71,3 +81,4 @@ export default function AddUser() {
         </Form>
     )
 }
+

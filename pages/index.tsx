@@ -4,14 +4,15 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Login from '../components/Login'
 import Container from 'react-bootstrap/Container'
+import { signIn, signOut, useSession } from "next-auth/client"
 
 const Home: NextPage = () => {
-  // localStorage.getItem('in')
-  // if (localStorage.getItem('in') == 'false'){
+  // let e3 = localStorage.getItem('in')
+  // if (e3 == 'true' ){
   //   alert('hello')
   // }
   return (
-    // <div className={styles.container}>
+    <div className={styles.container}>
       <Container>
         <Head>
           <title>Create Next App</title>
@@ -21,8 +22,24 @@ const Home: NextPage = () => {
         <Login></Login>
       </Container>
 
-    // </div>
+    </div>
   )
 }
+
+// export async function getStaticProps(context: any) {
+//   // let xc1= localStorage.getItem('login')
+
+
+
+
+//   // if (xc1 == 'yes') {
+//     return {
+//       redirect: {
+//         destination: '/users/dashboard/DashboardU',
+//         permanent: false
+//       }
+//     }
+//   // }
+// }
 
 export default Home

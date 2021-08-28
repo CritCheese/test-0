@@ -18,18 +18,60 @@
   },
   "user": [
     {
-      "id": 2,
+      "id": 1,
       "name": "king",
-      "password": "king",
+      "password": "king2",
       "gender": "male",
       "status": "active"
     },
     {
-      "id": 12,
+      "id": 2,
       "name": "ace",
       "password": "ace",
       "gender": "male",
       "status": "active"
+    },
+    {
+      "name": "dan",
+      "password": "dan",
+      "gender": "male",
+      "status": "active",
+      "id": 3
+    },
+    {
+      "name": "yun",
+      "password": "yun",
+      "gender": "male",
+      "status": "disabled",
+      "id": 4
+    },
+    {
+      "name": "snake",
+      "password": "snake",
+      "gender": "male",
+      "status": "active",
+      "id": 5
+    },
+    {
+      "name": "ten",
+      "password": "ten",
+      "gender": "male",
+      "status": "active",
+      "id": 6
+    },
+    {
+      "name": "fer",
+      "password": "fer",
+      "gender": "male",
+      "status": "disabled",
+      "id": 7
+    },
+    {
+      "name": "yen",
+      "password": "yen",
+      "gender": "female",
+      "status": "disabled",
+      "id": 8
     }
   ],
   "admin": [
@@ -38,6 +80,50 @@
       "name": "admin",
       "password": "root",
       "gender": "male"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "product 1",
+      "quantity": 30,
+      "date": "01-02-2023",
+      "category": "food"
+    },
+    {
+      "id": 2,
+      "name": "product 2",
+      "quantity": 20,
+      "date": "07-24-2021",
+      "category": "clothes"
+    },
+    {
+      "id": 3,
+      "name": "product 3",
+      "quantity": 10,
+      "date": "05-03-2019",
+      "category": "electronics"
+    },
+    {
+      "id": 4,
+      "name": "product 4",
+      "quantity": 75,
+      "date": "01-05-2021",
+      "category": "books"
+    },
+    {
+      "id": 5,
+      "name": "product 5",
+      "quantity": 30,
+      "date": "11-02-2020",
+      "category": "appliances"
+    },
+    {
+      "name": "product 6",
+      "quantity": "12",
+      "date": "2021-08-02",
+      "category": "electronics",
+      "id": 6
     }
   ]
 }
