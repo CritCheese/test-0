@@ -86,9 +86,12 @@
     {
       "id": 1,
       "name": "product 1",
-      "quantity": 30,
-      "date": "01-02-2023",
-      "category": "food"
+      "quantity": "23",
+      "date": "2021-08-11",
+      "category": "foods",
+      "password": "12",
+      "gender": "2021-08-10",
+      "status": "foods"
     },
     {
       "id": 2,

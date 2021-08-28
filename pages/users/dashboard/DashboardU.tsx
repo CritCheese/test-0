@@ -3,7 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from "react";
 import AddProduct from "../../../components/AddProduct";
 import Moment from 'react-moment';
-import EditProduct from "../../../components/EditPRoduct";
+import EditProduct from "../../../components/EditProduct";
 
 
 export default function DashboardU({ products }: InferGetStaticPropsType<typeof getStaticProps>) {

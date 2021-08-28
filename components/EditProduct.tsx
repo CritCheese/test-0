@@ -37,5 +37,51 @@ export default function EditProduct() {
 }
 
 export async function editRequest(event:any) {
-    
+    let x5 = localStorage.getItem('editP')
+    let xx5
+    if (x5 != null) {
+        xx5 = parseInt(x5)
+    }
+    event.preventDefault();
+    const axios = require('axios')
+    const n1 = event.target.formNameP2.value
+    const p1 = event.target.formQuantityP2.value
+    const g1 = event.target.formDateP2.value
+    const s1 = event.target.formCategoryP2.value
+    const res = await fetch("http://localhost:3000/product")
+    let x2 = true
+    let u9: Product[]
+    u9 = await res.json()
+
+    for (let i = 0; i < u9.length; i++) {
+        if (u9[i].id == xx5) {
+            continue
+        }
+        if (n1 == u9[i].name) {
+            console.log("invalid name")
+            x2 = false
+            break;
+        }
+    }
+    if (x2 != true){
+        alert('name existed!')
+    } else {
+        axios.patch(`http://localhost:3000/product/${xx5}`, {
+        name: n1,
+        quantity: p1,
+        date: g1,
+        category: s1
+    })
+        .then(function (response: any) {
+            console.log(response);
+            alert('Success!')
+            localStorage.removeItem('editP')
+            window.location.reload()
+        })
+        .catch(function (error: any) {
+            console.log(error);
+            alert('Failed!')
+
+        })
+    }
 }
